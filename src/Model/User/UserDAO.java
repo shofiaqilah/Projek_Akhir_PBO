@@ -81,6 +81,27 @@ public class UserDAO {
         return status;
     }
     
+    public boolean cekBuatAkun(String username){
+        boolean status = false;
+        try {
+            String query = "SELECT * FROM user WHERE username=?";
+            PreparedStatement statement;
+            statement = Connector.Connect().prepareStatement(query);
+            statement.setString(1, username);
+            ResultSet resultset = statement.executeQuery();
+            if (resultset.next()){
+                status = true;
+            }
+            resultset.close();
+            statement.close();
+       }
+       catch (SQLException e) {
+            System.out.println("Input Failed: " + e.getLocalizedMessage());
+           
+       }
+        return status;
+    }
+    
        public List <ModelUser> getAkun(String username){
         List<ModelUser> dataAkun = null;
         try{
@@ -91,7 +112,7 @@ public class UserDAO {
              ResultSet resultSet = statement.executeQuery(query);
              while(resultSet.next()){
                  ModelUser user = new ModelUser();
-                 user.setId(resultSet.getInt("int"));
+                 user.setId(resultSet.getInt("id_user"));
                  user.setNama(resultSet.getString("nama"));
                  user.setUsername(resultSet.getString("username"));
                  user.setUsername(resultSet.getString("password"));

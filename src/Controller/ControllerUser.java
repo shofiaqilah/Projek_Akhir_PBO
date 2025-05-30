@@ -5,6 +5,8 @@
 package Controller;
 import View.User.*;
 import Model.User.*;
+import View.DaftarLagu.Menu;
+import View.DaftarLagu.Menu;
 import java.util.List;
 import javax.swing.*;
 /**
@@ -40,6 +42,8 @@ public class ControllerUser {
                 status = daoUser.cekAkun(usn, pass);
                 if (status == true){
                     JOptionPane.showMessageDialog(null,"Berhasil Login");
+                    halamanLogin.dispose();
+                    new Menu().setVisible(true);
                 }
                 else{
                     JOptionPane.showMessageDialog(null,"Password atau username salah");
@@ -53,11 +57,13 @@ public class ControllerUser {
         return status;
     }
     
-    /*public void DataAkun(){
-        daoUser.getAkun();
-    }*/
+    public void ViewDataAkun(String username){
+        
+        daoUser.getAkun(username);
+    }
     
     public void insertUser(){
+        boolean status = false;
         try {
             ModelUser userBaru = new ModelUser();
             
@@ -72,10 +78,19 @@ public class ControllerUser {
                 userBaru.setNama(nama);
                 userBaru.setUsername(username);
                 userBaru.setPassword(password);
-                daoUser.insert(userBaru);
-                JOptionPane.showMessageDialog(null, "Akun berhasil dibuat :D");
-                halamanSignup.dispose();
-                new LogIn().setVisible(true);
+                 status = daoUser.cekBuatAkun(username);
+                if (password.length() != 8){
+                    throw new Exception("Password harus 8 karakter");
+                }
+                else if (status == true){
+                    throw new Exception("Username sudah terpakai");
+                }
+                else{
+                    daoUser.insert(userBaru);
+                    JOptionPane.showMessageDialog(null, "Akun berhasil dibuat :D");
+                    halamanSignup.dispose();
+                    new LogIn().setVisible(true);
+                }
             }
         } catch (Exception e) {
            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
