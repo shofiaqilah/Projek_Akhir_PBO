@@ -19,19 +19,12 @@ public class Connector {
 
     static Connection conn;
     
-    // Mencoba menghubungkan program kita dengan ke database MySQL.
     public static Connection Connect() {
         try {
-            // 1. Register driver yang akan dipakai
             Class.forName(jdbc_driver);
-            
-            // 2. Buat koneksi ke database
             conn = DriverManager.getConnection(url_db, username_db, password_db);
-
-            // 3. Menampilkan pesan "Connection Success" jika berhasil terhubung ke database.
             System.out.println("MySQL Connected");
         } catch (ClassNotFoundException | SQLException exception) {
-            // Menampilkan pesan error ketika MySQL gagal terhubung.
             System.out.println("Connection Failed: " + exception.getLocalizedMessage());
         }
         return conn;
