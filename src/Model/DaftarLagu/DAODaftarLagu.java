@@ -23,7 +23,7 @@ public class DAODaftarLagu {
             
             Statement statement = Connector.Connect().createStatement();
             
-            String query = "SELECT * FROM daftar_lagu;";
+            String query = "SELECT * FROM lagu;";
             ResultSet resultSet = statement.executeQuery(query);
             
             while (resultSet.next()) {
@@ -32,7 +32,7 @@ public class DAODaftarLagu {
                 ModelDaftarLagu lagu = new ModelDaftarLagu();
                 
                 // memasukkan hasil query ke objek lagu
-                lagu.setId(resultSet.getInt("id"));
+                lagu.setId(resultSet.getInt("id_lagu"));
                 lagu.setJudul(resultSet.getString("judul_lagu"));
                 lagu.setArtis(resultSet.getString("artis"));
                 lagu.setTanggal(resultSet.getString("tgl_rilis"));
