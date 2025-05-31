@@ -146,6 +146,7 @@ public class Menu extends javax.swing.JFrame {
     private void daftarLaguActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarLaguActionPerformed
         System.out.println("Button daftar lagu diklik");
         new View.DaftarLagu.ViewDaftarLagu().setVisible(true);
+        dispose();
     }//GEN-LAST:event_daftarLaguActionPerformed
 
     /**

@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model;
 
 import java.sql.*;
 
-/**
- *
- * @author ASUS
- */
 public class Connector {
     private static String jdbc_driver = "com.mysql.cj.jdbc.Driver";
     private static String nama_db = "shora";
