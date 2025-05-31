@@ -14,8 +14,6 @@ public class AudioPlayer extends PlaybackListener{
         
     //menggunakan JLayer library agar bisa play audio
     private AdvancedPlayer advancedPlayer;
-    private boolean isPaused;
-    
     private String filePath;
 
     
