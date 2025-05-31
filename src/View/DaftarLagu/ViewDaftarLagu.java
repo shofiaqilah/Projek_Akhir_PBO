@@ -15,6 +15,7 @@ public class ViewDaftarLagu extends javax.swing.JFrame {
     
     public ViewDaftarLagu() {
         initComponents();
+        setLocationRelativeTo(null);
         ctrlLagu = new ControllerDaftarLagu(this);
         ctrlLagu.tampilkanDaftarLagu();
     }
